@@ -3,30 +3,39 @@ unit tests: transform function
 """
 import unittest
 from unittest_pyspark import as_list
+
+from dependencies.helper import my_logger, my_timer
 from dependencies.spark_setup import start_spark
 from main import transform, get_joined_data
 from pyspark.sql.types import StructType, StructField, StringType, DoubleType, IntegerType
 import time
+import os
+import logging
 
 
 class PySparkTest(unittest.TestCase):
+    import logging
 
     def setUp(self):
 
         # start Spark, define path to test data
-        self.s = time.time()
         self.spark, self.log = start_spark()
-        self.test_data = 'test/test_data/'
+        # Get the current working directory
+        directory_path = os.getcwd()
+        folder_name = os.path.basename(directory_path)
+
+        if folder_name == 'test':
+            self.test_data = 'test_data/'
+        else:
+            self.test_data = 'test/test_data/'
         self.spark.sparkContext.setLogLevel("WARN")
         self.log.warn(f'{self.__module__} has started')
 
     def tearDown(self):
         # clean-up
+
         self.spark.stop()
         self.log.warn(f'{self.__module__} has finished')
-        self.d = time.time() - self.s
-        time.sleep(1)
-        print(f'Test suite took {round(self.d,4)} seconds to execute')
 
     def testTransformation(self):
         # test data transform function.
