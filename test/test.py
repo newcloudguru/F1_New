@@ -3,21 +3,15 @@ unit tests: transform function
 """
 import unittest
 from unittest_pyspark import as_list
-
-from dependencies.helper import my_logger, my_timer
-from dependencies.spark_setup import start_spark
+from src.utilities.spark_setup import start_spark
 from main import transform, get_joined_data
 from pyspark.sql.types import StructType, StructField, StringType, DoubleType, IntegerType
-import time
 import os
-import logging
 
 
 class PySparkTest(unittest.TestCase):
-    import logging
 
     def setUp(self):
-
         # start Spark, define path to test data
         self.spark, self.log = start_spark()
         # Get the current working directory

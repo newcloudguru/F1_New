@@ -12,8 +12,7 @@ __author__ = Fahim Safedien
 
 `make build`
 
-`spark-submit --master local test.py`
 `spark-submit --master local main.py`
 
-`cd dist && spark-submit --master local --py-files dep.zip main.py`
+`cd dist && spark-submit --master local --py-files src.zip main.py && cd`
 

@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession
-from dependencies import logging
+from src.utilities import logging
 
 
 def start_spark(app='spark_app', master='local[4]'):

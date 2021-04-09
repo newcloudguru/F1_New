@@ -1,4 +1,4 @@
-from dependencies.helper import my_logger, my_timer
+from src.utilities.helper import my_logger, my_timer
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType, DoubleType
 import pyspark.sql.functions as func
 
