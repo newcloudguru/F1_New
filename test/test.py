@@ -3,7 +3,7 @@ unit tests: transform function
 """
 import unittest
 from unittest_pyspark import as_list
-from src.utilities.spark_setup import start_spark
+from utilities.spark_setup import start_spark
 from main import transform, get_joined_data
 from pyspark.sql.types import StructType, StructField, StringType, DoubleType, IntegerType
 import os

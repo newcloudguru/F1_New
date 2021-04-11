@@ -1,8 +1,8 @@
 import os
 import sys
 import logging
-from src.utilities.etl import extract_salary, transform, extract, get_joined_data, load
-from src.utilities.spark_setup import start_spark
+from utilities.etl import extract_salary, transform, extract, get_joined_data, load
+from utilities.spark_setup import start_spark
 
 # check for dependency files
 if os.path.exists('src.zip'):
