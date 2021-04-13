@@ -3,10 +3,17 @@ unit tests: transform function
 """
 import unittest
 from unittest_pyspark import as_list
-from utilities.spark_setup import start_spark
-from main import transform, get_joined_data
 from pyspark.sql.types import StructType, StructField, StringType, DoubleType, IntegerType
 import os
+import sys
+
+if os.path.exists('src.zip'):
+    sys.path.insert(0, 'src.zip')
+else:
+    sys.path.insert(0, './src')
+
+from utilities.spark_setup import start_spark
+from utilities.etl import transform, get_joined_data
 
 
 class PySparkTest(unittest.TestCase):
