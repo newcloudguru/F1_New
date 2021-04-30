@@ -86,6 +86,7 @@ def main():
 
     spark = get_spark_session()
     get_logger(spark)
+    spark.sparkContext.setLogLevel("WARN")
     log.warn('main job is starting!')
     # execute pipeline
     df_extract = extract(spark)
