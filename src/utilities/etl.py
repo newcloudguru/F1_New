@@ -1,7 +1,6 @@
 from pyspark.sql.types import StructType, StructField
 from pyspark.sql.types import StringType, IntegerType, DoubleType
 import pyspark.sql.functions as func
-from pyspark.sql.functions import round, col
 from utilities.helper import my_logger, my_timer
 
 
@@ -32,13 +31,10 @@ def extract_salary_(ss):
     :param ss: spark session object.
     :return: dataframe.
     """
-    print("")
     schema = StructType([
         StructField("driver", StringType(), True),
         StructField("salary", IntegerType(), True)])
-
     df = (ss.read.csv('input/salary', header=False, schema=schema))
-
     return df
 
 
@@ -54,9 +50,6 @@ def transform(df1):
         .agg(func.avg("laptime")
              .alias("avg_laptime")) \
         .orderBy("avg_laptime")
-
-    # df.select("*", round(col('avg_laptime'), 2).alias("avg")).show()
-
     return df
 
 

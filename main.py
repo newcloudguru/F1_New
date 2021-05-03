@@ -77,10 +77,6 @@ def get_logger(spark):
     log4jLogger = spark.sparkContext._jvm.org.apache.log4j
     log = log4jLogger.LogManager.getLogger(__name__)
 
-    '''print('log4jLogger = ' + str(type(log4jLogger)))
-    print('log = ' + str(type(log)))
-    print('__name__ = ' + str(__name__))'''
-
 
 def main():
 

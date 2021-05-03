@@ -1,7 +1,6 @@
 import time
 from functools import wraps
 import logging
-from pyspark.sql import SparkSession
 
 
 def my_logger(orig_func):
